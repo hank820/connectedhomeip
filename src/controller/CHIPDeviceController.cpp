@@ -32,6 +32,7 @@
 #define __STDC_FORMAT_MACROS
 #endif
 
+#include <ctype.h>
 // module header, comes first
 #include <controller/CHIPDeviceController.h>
 

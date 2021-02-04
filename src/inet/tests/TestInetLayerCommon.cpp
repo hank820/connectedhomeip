@@ -24,7 +24,7 @@
  *      Inet layer.
  *
  */
-
+#include <ctype.h>
 #include "TestInetLayerCommon.hpp"
 
 #include <stdlib.h>

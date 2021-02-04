@@ -28,6 +28,7 @@
  *
  */
 
+#include <string.h>
 #include <inttypes.h>
 
 #include <core/CHIPSafeCasts.h>
@@ -97,7 +98,8 @@ CHIP_ERROR SecurePairingSession::Deserialize(SecurePairingSessionSerialized & in
     CHIP_ERROR error = CHIP_NO_ERROR;
     SecurePairingSessionSerializable serializable;
     size_t maxlen            = BASE64_ENCODED_LEN(sizeof(serializable));
-    size_t len               = strnlen(Uint8::to_char(input.inner), maxlen);
+    //size_t len               = strnlen(Uint8::to_char(input.inner), maxlen);
+    size_t len               = strlen (Uint8::to_char(input.inner)) < maxlen ? strlen (Uint8::to_char(input.inner)) : maxlen ;
     uint16_t deserializedLen = 0;
 
     VerifyOrExit(len < sizeof(SecurePairingSessionSerialized), error = CHIP_ERROR_INVALID_ARGUMENT);

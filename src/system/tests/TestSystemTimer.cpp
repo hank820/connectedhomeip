@@ -26,6 +26,8 @@
 #ifndef __STDC_LIMIT_MACROS
 #define __STDC_LIMIT_MACROS
 #endif
+
+#include <sys/time.h>
 // config
 #include <system/SystemConfig.h>
 

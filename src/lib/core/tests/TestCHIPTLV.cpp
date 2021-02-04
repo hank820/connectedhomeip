@@ -23,6 +23,7 @@
  *
  */
 
+#include <sys/time.h>
 #include "TestCore.h"
 
 #include <nlbyteorder.h>

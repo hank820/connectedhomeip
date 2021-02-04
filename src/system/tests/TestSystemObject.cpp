@@ -494,6 +494,7 @@ static int Initialize(void * aContext)
     void * lLayerContext   = nullptr;
 
 #if CHIP_SYSTEM_CONFIG_USE_LWIP && LWIP_VERSION_MAJOR <= 2 && LWIP_VERSION_MINOR < 1
+#if 0
     static sys_mbox_t * sLwIPEventQueue = NULL;
 
     if (sLwIPEventQueue == NULL)
@@ -502,8 +503,13 @@ static int Initialize(void * aContext)
     }
 
     lLayerContext = &sLwIPEventQueue;
-#endif // CHIP_SYSTEM_CONFIG_USE_LWIP
+#else
+    static sys_mbox_t sLwIPEventQueue;
 
+    sys_mbox_new(&sLwIPEventQueue, 100);
+    lLayerContext = &sLwIPEventQueue;
+#endif
+#endif // CHIP_SYSTEM_CONFIG_USE_LWIP
     lContext.mTestSuite    = &sTestSuite;
     lContext.mLayerContext = lLayerContext;
     lContext.mAccumulator  = 0;

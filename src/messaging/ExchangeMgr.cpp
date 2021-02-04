@@ -29,6 +29,7 @@
 #define __STDC_LIMIT_MACROS
 #endif
 
+#include <ctype.h>
 #include <cstring>
 #include <inttypes.h>
 #include <stddef.h>

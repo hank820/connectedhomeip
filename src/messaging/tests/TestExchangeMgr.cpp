@@ -21,6 +21,7 @@
  *      This file implements unit tests for the ExchangeManager implementation.
  */
 
+#include <ctype.h>
 #include "TestMessagingLayer.h"
 
 #include <core/CHIPCore.h>

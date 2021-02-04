@@ -27,6 +27,7 @@
 #define __STDC_FORMAT_MACROS
 #endif
 
+#include <ctype.h>
 #include <stdint.h>
 #include <string.h>
 #include <unistd.h>

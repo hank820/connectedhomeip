@@ -28,6 +28,7 @@
 #define __STDC_LIMIT_MACROS
 #endif
 
+#include <ctype.h>
 #include <inttypes.h>
 #include <stdint.h>
 #include <stdlib.h>

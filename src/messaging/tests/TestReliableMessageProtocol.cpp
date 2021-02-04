@@ -22,6 +22,7 @@
  *      implementation.
  */
 
+#include <ctype.h>
 #include "TestMessagingLayer.h"
 
 #include <core/CHIPCore.h>

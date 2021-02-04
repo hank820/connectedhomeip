@@ -27,6 +27,7 @@
  *
  */
 
+#include <ctype.h>
 #include "Base41.h"
 
 using namespace std;
