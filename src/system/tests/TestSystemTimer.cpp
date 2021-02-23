@@ -249,7 +249,7 @@ static int TestSetup(void * aContext)
     void * lLayerContext   = nullptr;
 
 #if CHIP_SYSTEM_CONFIG_USE_LWIP
-#if LWIP_VERSION_MAJOR <= 2 && LWIP_VERSION_MINOR < 1
+#if 0//LWIP_VERSION_MAJOR <= 2 && LWIP_VERSION_MINOR < 1
     static sys_mbox_t * sLwIPEventQueue = NULL;
 
     sys_mbox_new(sLwIPEventQueue, 100);
@@ -277,7 +277,7 @@ static int TestTeardown(void * aContext)
     lContext.mLayer->Shutdown();
 
 #if CHIP_SYSTEM_CONFIG_USE_LWIP
-#if !(LWIP_VERSION_MAJOR >= 2 && LWIP_VERSION_MINOR >= 1)
+#if 0//!(LWIP_VERSION_MAJOR >= 2 && LWIP_VERSION_MINOR >= 1)
     tcpip_finish(NULL, NULL);
 #endif
 #endif
