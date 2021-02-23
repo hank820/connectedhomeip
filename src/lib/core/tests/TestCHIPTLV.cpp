@@ -23,6 +23,9 @@
  *
  */
 
+#include "FreeRTOS.h"
+#include "task.h"
+
 #include <sys/time.h>
 #include "TestCore.h"
 
@@ -3725,8 +3728,7 @@ static void TLVReaderFuzzTest(nlTestSuite * inSuite, void * inContext)
 
     memcpy(fuzzedData, Encoding1, sizeof(fuzzedData));
 
-    time(&now);
-    endTime = now + sFuzzTestDurationSecs + 1;
+    endTime = xTaskGetTickCount() + sFuzzTestDurationSecs * 1000 + 1;
 
     srand(static_cast<unsigned int>(now));
 
@@ -3768,8 +3770,7 @@ static void TLVReaderFuzzTest(nlTestSuite * inSuite, void * inContext)
                 ExitNow();
             }
 
-            time(&now);
-            if (now >= endTime)
+            if (xTaskGetTickCount() >= endTime)
                 ExitNow();
 
             fuzzedData[i] = origVal;

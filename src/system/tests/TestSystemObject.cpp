@@ -28,13 +28,16 @@
 #define __STDC_LIMIT_MACROS
 #endif
 
+#include "FreeRTOS.h"
+#include "task.h"
+
 #include "TestSystemLayer.h"
 
 // Install a sleep in the high water mark function, to force
 // collisions between the threads that call it.
 
 // clang-format off
-#define SYSTEM_OBJECT_HWM_TEST_HOOK() do { usleep(1000); } while(0)
+#define SYSTEM_OBJECT_HWM_TEST_HOOK() do {vTaskDelay(1); } while(0)
 // clang-format on
 
 #include <system/SystemLayer.h>
@@ -473,7 +476,7 @@ static const nlTest sTests[] =
     NL_TEST_DEF("Concurrency",              TestObject::CheckConcurrency),
     NL_TEST_DEF("HighWatermark",            TestObject::CheckHighWatermark),
     NL_TEST_DEF("HighWatermarkConcurrency", TestObject::CheckHighWatermarkConcurrency),
-	NL_TEST_SENTINEL()
+    NL_TEST_SENTINEL()
 };
 
 static nlTestSuite sTestSuite =
@@ -493,8 +496,7 @@ static int Initialize(void * aContext)
     TestContext & lContext = *reinterpret_cast<TestContext *>(aContext);
     void * lLayerContext   = nullptr;
 
-#if CHIP_SYSTEM_CONFIG_USE_LWIP && LWIP_VERSION_MAJOR <= 2 && LWIP_VERSION_MINOR < 1
-#if 0
+#if 0//CHIP_SYSTEM_CONFIG_USE_LWIP && LWIP_VERSION_MAJOR <= 2 && LWIP_VERSION_MINOR < 1
     static sys_mbox_t * sLwIPEventQueue = NULL;
 
     if (sLwIPEventQueue == NULL)
@@ -503,12 +505,6 @@ static int Initialize(void * aContext)
     }
 
     lLayerContext = &sLwIPEventQueue;
-#else
-    static sys_mbox_t sLwIPEventQueue;
-
-    sys_mbox_new(&sLwIPEventQueue, 100);
-    lLayerContext = &sLwIPEventQueue;
-#endif
 #endif // CHIP_SYSTEM_CONFIG_USE_LWIP
     lContext.mTestSuite    = &sTestSuite;
     lContext.mLayerContext = lLayerContext;
