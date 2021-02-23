@@ -115,7 +115,6 @@ void GenericPlatformManagerImpl_FreeRTOS<ImplClass>::_RunEventLoop(void)
 
     // Lock the CHIP stack.
     Impl()->LockChipStack();
-
     while (true)
     {
         TickType_t waitTime;
@@ -164,7 +163,12 @@ void GenericPlatformManagerImpl_FreeRTOS<ImplClass>::_RunEventLoop(void)
         Impl()->UnlockChipStack();
 
         BaseType_t eventReceived = xQueueReceive(mChipEventQueue, &event, waitTime);
+        if (eventReceived == pdTRUE)
+            ChipLogError(DeviceLayer, "Event Received\r\n");
+        else
+            ChipLogError(DeviceLayer, "Event Timeout\r\n");
 
+ 
         // Lock the CHIP stack.
         Impl()->LockChipStack();
 
@@ -175,6 +179,11 @@ void GenericPlatformManagerImpl_FreeRTOS<ImplClass>::_RunEventLoop(void)
             Impl()->DispatchEvent(&event);
 
             eventReceived = xQueueReceive(mChipEventQueue, &event, 0);
+            if (eventReceived == pdTRUE)
+                ChipLogError(DeviceLayer, "Event Received\r\n");
+            else
+                ChipLogError(DeviceLayer, "No Event\r\n");
+
         }
     }
 }
