@@ -53,6 +53,14 @@ using namespace chip::Inet;
 using namespace chip::System;
 using namespace chip::Callback;
 
+static inline size_t
+strnlen(const char *s, size_t maxlen) {
+  size_t n = 0;
+  while(*s++ && n < maxlen)
+    ++n;
+  return n;
+}
+
 namespace chip {
 namespace Controller {
 
