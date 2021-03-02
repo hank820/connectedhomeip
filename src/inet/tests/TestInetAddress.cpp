@@ -26,7 +26,7 @@
 
 #include <inet/IPAddress.h>
 
-#include <string.h>
+#include <strings.h>
 
 #if CHIP_SYSTEM_CONFIG_USE_LWIP
 #include <lwip/init.h>
