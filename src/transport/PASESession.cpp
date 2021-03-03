@@ -43,14 +43,6 @@
 #include <support/SafeInt.h>
 #include <transport/SecureSessionMgr.h>
 
-static inline size_t
-strnlen(const char *s, size_t maxlen) {
-  size_t n = 0;
-  while(*s++ && n < maxlen)
-    ++n;
-  return n;
-}
-
 namespace chip {
 
 using namespace Crypto;
