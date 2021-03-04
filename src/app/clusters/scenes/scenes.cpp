@@ -811,7 +811,7 @@ bool emberAfPluginScenesServerParseAddScene(const EmberAfClusterCommand * cmd, G
             entry.currentLevelValue    = emberAfGetInt8u(extensionFieldSets, extensionFieldSetsIndex, extensionFieldSetsLen);
             break;
 #endif
-#ifdef ZCL_USING_THERMOSTAT_CLUSTER_SERVER
+#ifdef ZCL_USING_THERMOSTAT_CLUSTER_SERVER_CEB
         case ZCL_THERMOSTAT_CLUSTER_ID:
             if (length < 2)
             {
@@ -1047,7 +1047,7 @@ bool emberAfPluginScenesServerParseViewScene(const EmberAfClusterCommand * cmd, 
             emberAfPutInt8uInResp(entry.currentLevelValue);
         }
 #endif
-#ifdef ZCL_USING_THERMOSTAT_CLUSTER_SERVER
+#ifdef ZCL_USING_THERMOSTAT_CLUSTER_SERVER_CEB
         if (entry.hasOccupiedCoolingSetpointValue)
         {
             uint8_t * length;

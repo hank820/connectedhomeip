@@ -26,6 +26,7 @@
 /**** Network Section ****/
 #define EMBER_SUPPORTED_NETWORKS (1)
 
+
 #define EMBER_APS_UNICAST_MESSAGE_COUNT 10
 
 /**** Cluster endpoint counts ****/
@@ -44,6 +45,7 @@
 #define EMBER_AF_ON_OFF_CLUSTER_CLIENT_ENDPOINT_COUNT (1)
 #define EMBER_AF_SCENES_CLUSTER_CLIENT_ENDPOINT_COUNT (1)
 #define EMBER_AF_TEMP_MEASUREMENT_CLUSTER_CLIENT_ENDPOINT_COUNT (1)
+#define EMBER_AF_THERMOSTAT_CLUSTER_CLIENT_ENDPOINT_COUNT (1)
 
 /**** Cluster Plugins ****/
 
@@ -106,3 +108,7 @@
 // Use this macro to check if the client side of the Temperature Measurement cluster is included
 #define ZCL_USING_TEMP_MEASUREMENT_CLUSTER_CLIENT
 #define EMBER_AF_PLUGIN_TEMPERATURE_MEASUREMENT_CLIENT
+
+// Use this macro to check if the client side of the Thermostat cluster is included
+#define ZCL_USING_THERMOSTAT_CLUSTER_CLIENT
+#define EMBER_AF_PLUGIN_THERMOSTAT_CLIENT
