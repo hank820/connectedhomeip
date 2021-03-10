@@ -21,7 +21,7 @@ import("${build_root}/config/target.gni")
 declare_args() {
   # Enable -Werror. This can be disabled if using a different compiler
   # with unfixed or unsupported wanings.
-  treat_warnings_as_errors = true
+  treat_warnings_as_errors = false
 }
 
 _is_embedded_arm = current_os != "ios" && current_os != "mac_os" &&
