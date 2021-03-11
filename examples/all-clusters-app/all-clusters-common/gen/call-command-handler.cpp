@@ -25,6 +25,7 @@
 #include "cluster-id.h"
 #include "command-id.h"
 #include "util.h"
+#include "af.h"
 
 using namespace chip;
 
