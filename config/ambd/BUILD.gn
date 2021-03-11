@@ -24,7 +24,7 @@ declare_args() {
   chip_build_pw_rpc_lib = false
 }
 
-group("esp32") {
+group("ambd") {
   deps = [ "${chip_root}/src/lib" ]
 
   if (chip_build_pw_rpc_lib) {
